@@ -12,7 +12,7 @@ st.set_page_config(page_title="Panel Top Redes", page_icon=LOGO, layout="centere
 # Edita aquí títulos, descripciones o URLs si cambian.
 APPS = [
     {
-        "titulo": "Facturación SOS Madera",
+        "titulo": "Generador de Facturas Top Redes",
         "descripcion": "Generar facturas en PDF y Word con numeración correlativa.",
         "url": "https://facturacionsosmadera.streamlit.app/",
         "icono": "🧾",
@@ -24,13 +24,13 @@ APPS = [
         "icono": "📝",
     },
     {
-        "titulo": "Calcular precios instalaciones",
+        "titulo": "Calculador",
         "descripcion": "Estimar el precio de una instalación de red.",
         "url": "https://calcularpreciosinstalaciones.streamlit.app/",
         "icono": "🧮",
     },
     {
-        "titulo": "Fichajes Top Redes",
+        "titulo": "Fichador Top Redes",
         "descripcion": "Registro de jornada y fichajes del equipo.",
         "url": "https://fichajes-topredes.streamlit.app/",
         "icono": "⏱️",
