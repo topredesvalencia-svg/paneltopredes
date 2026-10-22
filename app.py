@@ -39,14 +39,38 @@ APPS = [
 
 ALTURA_TARJETA = 200  # píxeles; todas las tarjetas tienen el mismo tamaño
 
+# ---------------------------------------------------------------- estilos
+st.markdown(
+    """
+    <style>
+      /* Botones en magenta corporativo (sobrescribe el rojo por defecto) */
+      a[data-testid="stLinkButton"],
+      a[data-testid^="stBaseButton"],
+      [data-testid="stLinkButton"] a {
+        background-color: #E01B7D !important;
+        border-color: #E01B7D !important;
+        color: #FFFFFF !important;
+      }
+      a[data-testid="stLinkButton"]:hover,
+      a[data-testid^="stBaseButton"]:hover,
+      [data-testid="stLinkButton"] a:hover {
+        background-color: #C2146A !important;
+        border-color: #C2146A !important;
+        color: #FFFFFF !important;
+      }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # ---------------------------------------------------------------- cabecera
 col_logo, col_titulo = st.columns([1, 4], vertical_alignment="center")
 with col_logo:
     st.image(LOGO, width=90)
 with col_titulo:
     st.markdown(
-        "<h1 style='color:#E01B7D;margin:0;font-size:2.2rem'>Top Redes Valencia</h1>"
-        "<p style='color:#666;margin:0'>Panel de aplicaciones internas</p>",
+        "<h1 style='color:#E01B7D;margin:0;font-size:3.4rem;line-height:1.1'>Top Redes Valencia</h1>"
+        "<p style='color:#666;margin:4px 0 0 0;font-size:1.1rem'>Panel de aplicaciones internas</p>",
         unsafe_allow_html=True,
     )
 st.write("")
