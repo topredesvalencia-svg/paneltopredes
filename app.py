@@ -37,7 +37,8 @@ APPS = [
     },
 ]
 
-ALTURA_TARJETA = 200  # píxeles; todas las tarjetas tienen el mismo tamaño
+ALTURA_TARJETA = 200   # px: altura total de cada tarjeta
+ALTURA_TEXTO = 110     # px: zona de título + descripción (igual en todas)
 
 # ---------------------------------------------------------------- estilos
 st.markdown(
@@ -58,21 +59,24 @@ st.markdown(
         border-color: #C2146A !important;
         color: #FFFFFF !important;
       }
+      /* Títulos del panel centrados */
+      .cabecera { text-align:center; }
+      .cabecera h1 { color:#E01B7D; font-size:3.4rem; line-height:1.1; margin:8px 0 0 0; }
+      .cabecera p  { color:#666; font-size:1.1rem; margin:6px 0 0 0; }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# ---------------------------------------------------------------- cabecera
-col_logo, col_titulo = st.columns([1, 4], vertical_alignment="center")
+# ---------------------------------------------------------------- cabecera (centrada)
+_, col_logo, _ = st.columns([2, 1, 2])
 with col_logo:
-    st.image(LOGO, width=90)
-with col_titulo:
-    st.markdown(
-        "<h1 style='color:#E01B7D;margin:0;font-size:3.4rem;line-height:1.1'>Top Redes Valencia</h1>"
-        "<p style='color:#666;margin:4px 0 0 0;font-size:1.1rem'>Panel de aplicaciones internas</p>",
-        unsafe_allow_html=True,
-    )
+    st.image(LOGO, width=110)
+st.markdown(
+    "<div class='cabecera'><h1>Top Redes Valencia</h1>"
+    "<p>Panel de aplicaciones internas</p></div>",
+    unsafe_allow_html=True,
+)
 st.write("")
 
 # ---------------------------------------------------------------- tarjetas
@@ -80,8 +84,17 @@ cols = st.columns(2)
 for i, app in enumerate(APPS):
     with cols[i % 2]:
         with st.container(border=True, height=ALTURA_TARJETA):
-            st.markdown(f"##### {app['icono']} {app['titulo']}")
-            st.caption(app["descripcion"])
+            # Bloque de texto con altura fija y centrado vertical + horizontal
+            st.markdown(
+                f"<div style='height:{ALTURA_TEXTO}px;display:flex;flex-direction:column;"
+                f"justify-content:center;align-items:center;text-align:center;'>"
+                f"<div style='font-weight:600;font-size:1.05rem;color:#262730;'>"
+                f"{app['icono']} {app['titulo']}</div>"
+                f"<div style='color:#777;font-size:0.9rem;margin-top:6px;'>"
+                f"{app['descripcion']}</div></div>",
+                unsafe_allow_html=True,
+            )
+            # El botón va siempre debajo, a la misma altura en todas las tarjetas
             st.link_button("Abrir", app["url"], use_container_width=True, type="primary")
         st.write("")
 
